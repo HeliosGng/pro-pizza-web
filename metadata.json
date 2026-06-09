@@ -1,0 +1,6 @@
+{
+  "name": "Pro Pizza",
+  "description": "Premium website for Pro Pizza in Tirana, Albania, featuring an exquisite dark red theme, a full-featured shopping cart system, high-accuracy GPS coordinates tracking, and quick order sending via WhatsApp.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

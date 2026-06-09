@@ -1,0 +1,985 @@
+export interface MenuItem {
+  id: string;
+  nameEn: string;
+  nameSq: string;
+  descriptionSq: string;
+  descriptionEn: string;
+  priceMedium?: number;
+  priceFamily?: number;
+  priceSq?: number;
+  priceEn?: number;
+  category: "pizza" | "sandwiches" | "drinks";
+  image: string;
+  tagsEn?: string[];
+  tagsSq?: string[];
+  isPopular?: boolean;
+}
+
+export interface Review {
+  id: string;
+  author: string;
+  type: string;
+  count: string;
+  rating: number;
+  dateEn: string;
+  dateSq: string;
+  commentEn: string;
+  commentSq: string;
+}
+
+export const PRODUCTS: MenuItem[] = [
+  {
+    "id": "pizza-margherita",
+    "nameEn": "Pizza Margherita",
+    "nameSq": "Pica Margherita",
+    "descriptionSq": "Salcë, mozzarella",
+    "descriptionEn": "Tomato sauce, mozzarella cheese",
+    "priceMedium": 350,
+    "priceFamily": 600,
+    "category": "pizza",
+    "image": "https://imageproxy.wolt.com/assets/664c5e44711863530d4b6cbf?w=600",
+    "tagsEn": [
+      "Classic",
+      "Vegetarian"
+    ],
+    "tagsSq": [
+      "Klasike",
+      "Vegjetariane"
+    ],
+    "isPopular": true
+  },
+  {
+    "id": "pizza-sallam",
+    "nameEn": "Pizza Salami",
+    "nameSq": "Pica Sallam",
+    "descriptionSq": "Salcë, mozzarella, sallam",
+    "descriptionEn": "Tomato sauce, mozzarella, salami",
+    "priceMedium": 400,
+    "priceFamily": 750,
+    "category": "pizza",
+    "image": "https://imageproxy.wolt.com/assets/664c5dfed4f69826da86c72f?w=600",
+    "tagsEn": [
+      "Meat"
+    ],
+    "tagsSq": [
+      "Me Mish"
+    ]
+  },
+  {
+    "id": "pizza-proshute",
+    "nameEn": "Pizza Ham",
+    "nameSq": "Pica Proshutë",
+    "descriptionSq": "Salcë, mozzarella, proshutë",
+    "descriptionEn": "Tomato sauce, mozzarella, cooked ham",
+    "priceMedium": 450,
+    "priceFamily": 800,
+    "category": "pizza",
+    "image": "https://imageproxy.wolt.com/assets/664c5df30378382c605b3a37?w=600",
+    "tagsEn": [
+      "Italian Style"
+    ],
+    "tagsSq": [
+      "Stil Italian"
+    ]
+  },
+  {
+    "id": "pizza-proshute-krudo",
+    "nameEn": "Pizza Prosciutto Crudo",
+    "nameSq": "Pica Proshutë Krudo",
+    "descriptionSq": "Salcë, mozzarella, proshutë krudo",
+    "descriptionEn": "Tomato sauce, mozzarella, authentic crudo prosciutto",
+    "priceMedium": 600,
+    "priceFamily": 1100,
+    "category": "pizza",
+    "image": "https://imageproxy.wolt.com/assets/664c5dc1711863530d4b6cb4?w=600",
+    "tagsEn": [
+      "Premium",
+      "Crudo"
+    ],
+    "tagsSq": [
+      "Premium",
+      "Krudo"
+    ],
+    "isPopular": true
+  },
+  {
+    "id": "pizza-kerpudhe",
+    "nameEn": "Pizza Mushroom",
+    "nameSq": "Pica Kërpudhë",
+    "descriptionSq": "Salcë, mozzarella, kërpudhë",
+    "descriptionEn": "Tomato sauce, mozzarella, wild mushrooms",
+    "priceMedium": 400,
+    "priceFamily": 750,
+    "category": "pizza",
+    "image": "https://imageproxy.wolt.com/assets/664c5d7728b73237164af352?w=600",
+    "tagsEn": [
+      "Vegetarian"
+    ],
+    "tagsSq": [
+      "Vegjetariane"
+    ]
+  },
+  {
+    "id": "pizza-proshute-sallam",
+    "nameEn": "Pizza Ham & Salami",
+    "nameSq": "Pica Proshutë Sallam",
+    "descriptionSq": "Salcë, mozzarella, proshutë, sallam",
+    "descriptionEn": "Tomato sauce, mozzarella, cooked ham, premium salami",
+    "priceMedium": 450,
+    "priceFamily": 800,
+    "category": "pizza",
+    "image": "https://imageproxy.wolt.com/assets/664c5dd60378382c605b3a33?w=600",
+    "tagsEn": [
+      "Rich Meat"
+    ],
+    "tagsSq": [
+      "Me Shumë Mish"
+    ]
+  },
+  {
+    "id": "pizza-proshute-kerpudhe",
+    "nameEn": "Pizza Ham & Mushroom",
+    "nameSq": "Pica Proshutë Kërpudhë",
+    "descriptionSq": "Salcë, mozzarella, proshutë, kërpudhë",
+    "descriptionEn": "Tomato sauce, mozzarella, ham, fresh mushrooms",
+    "priceMedium": 500,
+    "priceFamily": 900,
+    "category": "pizza",
+    "image": "https://imageproxy.wolt.com/assets/664c5e720378382c605b3a3b?w=600",
+    "tagsEn": [
+      "Classic Choice"
+    ],
+    "tagsSq": [
+      "Zgjedhje Klasike"
+    ],
+    "isPopular": true
+  },
+  {
+    "id": "pizza-proshute-krudo-kerpudhe",
+    "nameEn": "Pizza Prosciutto Crudo & Mushroom",
+    "nameSq": "Pica Proshutë Krudo Kërpudhë",
+    "descriptionSq": "Salcë, mozzarella, proshutë krudo, kërpudhë",
+    "descriptionEn": "Tomato sauce, mozzarella, premium crudo, mushrooms",
+    "priceMedium": 650,
+    "priceFamily": 1200,
+    "category": "pizza",
+    "image": "https://imageproxy.wolt.com/assets/664c5e720378382c605b3a3b?w=600",
+    "tagsEn": [
+      "Gourmet"
+    ],
+    "tagsSq": [
+      "Gustatore"
+    ]
+  },
+  {
+    "id": "pizza-kapricosa",
+    "nameEn": "Pizza Capriccosa",
+    "nameSq": "Pica Kapricosa",
+    "descriptionSq": "Salcë, mozzarella, proshutë, sallam, kërpudhë, ullinj",
+    "descriptionEn": "Tomato sauce, mozzarella, ham, salami, mushrooms, black olives",
+    "priceMedium": 500,
+    "priceFamily": 900,
+    "category": "pizza",
+    "image": "https://imageproxy.wolt.com/assets/664c5e3d711863530d4b6cbd?w=600",
+    "tagsEn": [
+      "Fully Loaded",
+      "Popular"
+    ],
+    "tagsSq": [
+      "E Plotë",
+      "Më e Shitura"
+    ],
+    "isPopular": true
+  },
+  {
+    "id": "pizza-kapricosa-krudo",
+    "nameEn": "Pizza Capriccosa Crudo",
+    "nameSq": "Pica Kapricosa Krudo",
+    "descriptionSq": "Salcë, mozzarella, proshutë krudo, kërpudhë, ullinj",
+    "descriptionEn": "Tomato sauce, mozzarella, prosciutto crudo, mushrooms, olives",
+    "priceMedium": 700,
+    "priceFamily": 1350,
+    "category": "pizza",
+    "image": "https://imageproxy.wolt.com/assets/664c5e3d711863530d4b6cbd?w=600",
+    "tagsEn": [
+      "Royal",
+      "Exclusive"
+    ],
+    "tagsSq": [
+      "Mbretërore",
+      "Ekskluzive"
+    ]
+  },
+  {
+    "id": "pizza-katër-stinet",
+    "nameEn": "Pizza 4 Seasons (4 Stinët)",
+    "nameSq": "Pica 4 Stinët",
+    "descriptionSq": "Salcë, mozzarella, proshutë, sallam, kërpudhë, ton",
+    "descriptionEn": "Tomato sauce, mozzarella, ham, salami, mushrooms, gourmet tuna",
+    "priceMedium": 500,
+    "priceFamily": 900,
+    "category": "pizza",
+    "image": "https://imageproxy.wolt.com/assets/664c5e1c711863530d4b6cba?w=600",
+    "tagsEn": [
+      "Traditional"
+    ],
+    "tagsSq": [
+      "Tradicionale"
+    ]
+  },
+  {
+    "id": "pizza-katër-djathrat",
+    "nameEn": "Pizza 4 Cheeses (4 Djathrat)",
+    "nameSq": "Pica 4 Djathrat",
+    "descriptionSq": "Salcë, mozzarella, gorgonxola, guda, djathë i bardhë",
+    "descriptionEn": "Tomato sauce, mozzarella, gorgonzola, gouda, white chesses",
+    "priceMedium": 450,
+    "priceFamily": 800,
+    "category": "pizza",
+    "image": "https://imageproxy.wolt.com/assets/664c5e24d4f69826da86c733?w=600",
+    "tagsEn": [
+      "Cheese Lovers"
+    ],
+    "tagsSq": [
+      "Pasioni i Djathtit"
+    ]
+  },
+  {
+    "id": "pizza-tonno",
+    "nameEn": "Pizza Tuna (Tonno)",
+    "nameSq": "Pica Tonno",
+    "descriptionSq": "Salcë, mozzarella, ton, speca, ullinj",
+    "descriptionEn": "Tomato sauce, mozzarella, premium tuna, sweet peppers, olives",
+    "priceMedium": 500,
+    "priceFamily": 900,
+    "category": "pizza",
+    "image": "https://imageproxy.wolt.com/assets/664c5e13711863530d4b6cb9?w=600",
+    "tagsEn": [
+      "Marine Taste"
+    ],
+    "tagsSq": [
+      "Shije Deti"
+    ]
+  },
+  {
+    "id": "pizza-tonno-kerpudhe",
+    "nameEn": "Pizza Tuna & Mushroom",
+    "nameSq": "Pica Tonno Kërpudhë",
+    "descriptionSq": "Salcë, mozzarella, ton, kërpudhë",
+    "descriptionEn": "Tomato sauce, mozzarella, premium tuna, mushrooms",
+    "priceMedium": 550,
+    "priceFamily": 950,
+    "category": "pizza",
+    "image": "https://imageproxy.wolt.com/assets/664c5e08d4f69826da86c730?w=600",
+    "tagsEn": [
+      "Savory"
+    ],
+    "tagsSq": [
+      "Shijshme"
+    ]
+  },
+  {
+    "id": "pizza-tonno-proshute",
+    "nameEn": "Pizza Tuna & Ham",
+    "nameSq": "Pica Tonno Proshutë",
+    "descriptionSq": "Salcë, mozzarella, proshutë, ton",
+    "descriptionEn": "Tomato sauce, mozzarella, cooked ham, premium tuna",
+    "priceMedium": 550,
+    "priceFamily": 1000,
+    "category": "pizza",
+    "image": "https://imageproxy.wolt.com/assets/664c5e0ed4f69826da86c731?w=600",
+    "tagsEn": [
+      "Special Mix"
+    ],
+    "tagsSq": [
+      "Kombinim Special"
+    ]
+  },
+  {
+    "id": "pizza-mix",
+    "nameEn": "Pizza Mix",
+    "nameSq": "Pica Mix",
+    "descriptionSq": "Salcë, mozzarella, ton, kërpudhë, ullinj, sallam pikant, speca",
+    "descriptionEn": "Tomato sauce, mozzarella, tuna, mushrooms, olives, spicy salami, bell peppers",
+    "priceMedium": 600,
+    "priceFamily": 1150,
+    "category": "pizza",
+    "image": "https://imageproxy.wolt.com/assets/664c5ace0378382c605b39ee?w=600",
+    "tagsEn": [
+      "Super Mixed"
+    ],
+    "tagsSq": [
+      "E Kombinuar Plotësisht"
+    ],
+    "isPopular": true
+  },
+  {
+    "id": "pizza-vegjetariane",
+    "nameEn": "Pizza Vegetariana",
+    "nameSq": "Pica Vegjetariane",
+    "descriptionSq": "Salcë, mozzarella, domate, speca, ullinj",
+    "descriptionEn": "Tomato sauce, mozzarella, fresh tomatoes, crisp bell peppers, black olives",
+    "priceMedium": 450,
+    "priceFamily": 750,
+    "category": "pizza",
+    "image": "https://imageproxy.wolt.com/assets/69f84b3d0bde899936825fca",
+    "tagsEn": [
+      "Healthy",
+      "Vegetarian"
+    ],
+    "tagsSq": [
+      "E Shëndetshme",
+      "Vegjetariane"
+    ]
+  },
+  {
+    "id": "pizza-pikante",
+    "nameEn": "Pizza Diavola (Pikante)",
+    "nameSq": "Pica Pikante",
+    "descriptionSq": "Salcë, mozzarella, sallam pikant, speca, ullinj",
+    "descriptionEn": "Tomato sauce, mozzarella, spicy Italian salami, bell peppers, olives",
+    "priceMedium": 500,
+    "priceFamily": 900,
+    "category": "pizza",
+    "image": "https://imageproxy.wolt.com/assets/664c5e49711863530d4b6cc0?w=600",
+    "tagsEn": [
+      "Fuego",
+      "Spicy"
+    ],
+    "tagsSq": [
+      "Flakë",
+      "Pikante"
+    ],
+    "isPopular": true
+  },
+  {
+    "id": "pizza-peperoni",
+    "nameEn": "Pizza Pepperoni",
+    "nameSq": "Pica Pepperoni",
+    "descriptionSq": "Salcë, mozzarella, peperoni",
+    "descriptionEn": "Tomato sauce, mozzarella, authentic Italian pepperoni slices",
+    "priceMedium": 550,
+    "priceFamily": 1000,
+    "category": "pizza",
+    "image": "https://imageproxy.wolt.com/assets/664c5a55711863530d4b6c87",
+    "tagsEn": [
+      "Traditional Pepperoni"
+    ],
+    "tagsSq": [
+      "Peperoni Tradicional"
+    ]
+  },
+  {
+    "id": "pizza-shtepie",
+    "nameEn": "Homemade Style Pizza (Shtëpie)",
+    "nameSq": "Pica Shtëpie",
+    "descriptionSq": "Salcë, mozzarella, djathë i bardhë, domate, speca, proshutë",
+    "descriptionEn": "Tomato sauce, mozzarella, soft white Albanian cheese, fresh tomatoes, peppers, cooked ham",
+    "priceMedium": 500,
+    "priceFamily": 900,
+    "category": "pizza",
+    "image": "https://imageproxy.wolt.com/assets/69f84b3d0bde899936825fca",
+    "tagsEn": [
+      "Local Touch"
+    ],
+    "tagsSq": [
+      "Tradita Shqiptare"
+    ]
+  },
+  {
+    "id": "pizza-la-crema",
+    "nameEn": "Pizza La Crema",
+    "nameSq": "Pica La Crema",
+    "descriptionSq": "Salcë, mozzarella, pana, proshutë, sallam, sallam pikant, kërpudhë",
+    "descriptionEn": "Tomato sauce, mozzarella, heavy cooking cream, cooked ham, salami, spicy salami, fresh mushrooms",
+    "priceMedium": 550,
+    "priceFamily": 950,
+    "category": "pizza",
+    "image": "https://imageproxy.wolt.com/assets/664c5d4b711863530d4b6cad?w=600",
+    "tagsEn": [
+      "Extra Creamy"
+    ],
+    "tagsSq": [
+      "Shtresë Krem"
+    ]
+  },
+  {
+    "id": "pizza-la-crema-krudo",
+    "nameEn": "Pizza La Crema Crudo",
+    "nameSq": "Pica La Crema Krudo",
+    "descriptionSq": "Salcë, mozzarella, pana, proshutë krudo, sallam pikant, kërpudhë",
+    "descriptionEn": "Tomato sauce, mozzarella, cooking cream, prosciutto crudo, spicy salami, fresh mushrooms",
+    "priceMedium": 750,
+    "priceFamily": 1400,
+    "category": "pizza",
+    "image": "https://imageproxy.wolt.com/assets/664c5d592033851f15152804?w=600",
+    "tagsEn": [
+      "Luxury Cheese & Crudo"
+    ],
+    "tagsSq": [
+      "E Pasur e Krudo"
+    ]
+  },
+  {
+    "id": "pizza-italia",
+    "nameEn": "Pizza Italia Special",
+    "nameSq": "Pica Italia",
+    "descriptionSq": "Salcë, proshutë, sallam, mozzarella, pana",
+    "descriptionEn": "Tomato sauce, premium ham, fine salami, melting mozzarella, light cooking cream",
+    "priceMedium": 500,
+    "priceFamily": 850,
+    "category": "pizza",
+    "image": "https://imageproxy.wolt.com/assets/664c5d4b711863530d4b6cad?w=600",
+    "tagsEn": [
+      "Signature",
+      "House Special"
+    ],
+    "tagsSq": [
+      "Shtëpisë",
+      "Specialiteti ynë"
+    ],
+    "isPopular": true
+  },
+  {
+    "id": "pro-pizza",
+    "nameEn": "PRO Pizza Extra",
+    "nameSq": "PRO Pica",
+    "descriptionSq": "Salcë, mozzarella, gorgonxola, sallam, peperoni, pana",
+    "descriptionEn": "Tomato sauce, rich mozzarella, gorgonzola cheese, premium salami, pepperoni, heavy cream",
+    "priceMedium": 700,
+    "priceFamily": 1300,
+    "category": "pizza",
+    "image": "data:image/jpeg;base64,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",
+    "tagsEn": [
+      "Executive Choice"
+    ],
+    "tagsSq": [
+      "Zgjedhje E Parë"
+    ],
+    "isPopular": true
+  },
+  {
+    "id": "pizza-mediteriane",
+    "nameEn": "Pizza Mediteriane",
+    "nameSq": "Pica Mediteriane",
+    "descriptionSq": "Salcë, mozzarella, sallam pikant, ton",
+    "descriptionEn": "Tomato sauce, mozzarella, pepperoni/spicy salami, delicious tuna",
+    "priceMedium": 600,
+    "priceFamily": 1000,
+    "category": "pizza",
+    "image": "https://imageproxy.wolt.com/assets/664c5e0ed4f69826da86c731?w=600",
+    "tagsEn": [
+      "Mediterranean Duo"
+    ],
+    "tagsSq": [
+      "Dyshja Mesdhetare"
+    ]
+  },
+  {
+    "id": "pizza-primavera",
+    "nameEn": "Pizza Primavera",
+    "nameSq": "Pica Primavera",
+    "descriptionSq": "Salcë, mozzarella, rukola, pomodorini, proshutë krudo, djathë grana, vaj ulliri",
+    "descriptionEn": "Tomato sauce, mozzarella, fresh wild baby arugula, cherry tomatoes, prosciutto crudo, shaved grana padano cheese, olive oil",
+    "priceMedium": 700,
+    "priceFamily": 1350,
+    "category": "pizza",
+    "image": "https://imageproxy.wolt.com/assets/664c60592033851f15152829?w=600",
+    "tagsEn": [
+      "Gourmet Garden"
+    ],
+    "tagsSq": [
+      "Kopshti i Shijes"
+    ],
+    "isPopular": true
+  },
+  {
+    "id": "pizza-ime",
+    "nameEn": "My Pizza (Ime)",
+    "nameSq": "Pica Ime",
+    "descriptionSq": "Pana, kërpudhë, mozzarella, gorgonxola",
+    "descriptionEn": "Cooking cream base, wild mushrooms, mozzarella, fine blue gorgonzola cheese",
+    "priceMedium": 600,
+    "priceFamily": 900,
+    "category": "pizza",
+    "image": "https://imageproxy.wolt.com/assets/664c5a042033851f151527da?w=600",
+    "tagsEn": [
+      "White Pizza"
+    ],
+    "tagsSq": [
+      "Pica e Bardhë"
+    ]
+  },
+  {
+    "id": "pizza-chicken",
+    "nameEn": "Pizza Chicken",
+    "nameSq": "Pica Chicken",
+    "descriptionSq": "Salcë, mozzarella, fileto pule",
+    "descriptionEn": "Tomato sauce, premium mozzarella, roasted chicken breast tender slices",
+    "priceMedium": 550,
+    "priceFamily": 1000,
+    "category": "pizza",
+    "image": "https://imageproxy.wolt.com/assets/664c5e30d4f69826da86c735?w=600",
+    "tagsEn": [
+      "Protein Packed"
+    ],
+    "tagsSq": [
+      "E Pasur me Proteinë"
+    ]
+  },
+  {
+    "id": "pizza-chicken-pana",
+    "nameEn": "Pizza Chicken Pana Cream",
+    "nameSq": "Pica Chicken Pana",
+    "descriptionSq": "Mozzarella, fileto pule, djath i bardhë, pana, domate",
+    "descriptionEn": "Melting mozzarella, delicious chicken breast, white cheese, heavy cream base, fresh tomatoes",
+    "priceMedium": 600,
+    "priceFamily": 1150,
+    "category": "pizza",
+    "image": "https://imageproxy.wolt.com/assets/664c5b10bee137303be4d785?w=600",
+    "tagsEn": [
+      "Super Deluxe Chicken"
+    ],
+    "tagsSq": [
+      "Mishi i Pulës Deluxe"
+    ]
+  },
+  {
+    "id": "pizza-chicken-garlic",
+    "nameEn": "Pizza Chicken & Garlic Sauce",
+    "nameSq": "Pica Chicken & Garlic sauce",
+    "descriptionSq": "Salcë, mozzarella, fileto pule, salcë hudhre speciale",
+    "descriptionEn": "Tomato sauce, premium mozzarella, grilled chicken slices, custom infused garlic cream sauce",
+    "priceMedium": 600,
+    "priceFamily": 1150,
+    "category": "pizza",
+    "image": "https://imageproxy.wolt.com/assets/664c5e33711863530d4b6cbc?w=600",
+    "tagsEn": [
+      "Rich Flavor Burst"
+    ],
+    "tagsSq": [
+      "Arome e Plotë"
+    ]
+  },
+  {
+    "id": "pizza-burn",
+    "nameEn": "Pizza Burn (Super Hot)",
+    "nameSq": "Pica Burn",
+    "descriptionSq": "Salcë, mozzarella, peperoni, fileto pule, salcë hudhre pikante",
+    "descriptionEn": "Tomato sauce, mozzarella, hot pepperoni slices, roasted chicken breast, spicy house garlic sauce",
+    "priceMedium": 750,
+    "priceFamily": 1450,
+    "category": "pizza",
+    "image": "https://imageproxy.wolt.com/assets/664c5e2ad4f69826da86c734?w=600",
+    "tagsEn": [
+      "Super Spicy"
+    ],
+    "tagsSq": [
+      "Jashtëzakonisht Pikante"
+    ]
+  },
+  {
+    "id": "pizza-tersina",
+    "nameEn": "Pizza Tersina Tartufo",
+    "nameSq": "Pica Tersina",
+    "descriptionSq": "Salcë tartufi, mozzarella, peperoni, kërpudhë",
+    "descriptionEn": "Luxurious black truffle cream sauce, mozzarella, high-grade pepperoni, wild mushrooms",
+    "priceMedium": 650,
+    "priceFamily": 1100,
+    "category": "pizza",
+    "image": "https://imageproxy.wolt.com/assets/664c5e5a711863530d4b6cc1?w=600",
+    "tagsEn": [
+      "Black Truffle",
+      "Aromatic"
+    ],
+    "tagsSq": [
+      "Krem Zi Trufi",
+      "Aromatike"
+    ],
+    "isPopular": true
+  },
+  {
+    "id": "pizza-tartufata",
+    "nameEn": "Pizza Tartufata Crudo",
+    "nameSq": "Pica Tartufata",
+    "descriptionSq": "Salcë tartufi, mozzarella, proshute krudo, kërpudhë",
+    "descriptionEn": "Black truffle cream sauce, mozzarella, authentic prosciutto crudo, mountain mushrooms",
+    "priceMedium": 700,
+    "priceFamily": 1350,
+    "category": "pizza",
+    "image": "https://imageproxy.wolt.com/assets/664c5e5ed4f69826da86c739?w=600",
+    "tagsEn": [
+      "Elite Choice",
+      "Truffle"
+    ],
+    "tagsSq": [
+      "Kombinim Elitar",
+      "Truf"
+    ]
+  },
+  {
+    "id": "pizza-tartufami",
+    "nameEn": "Pizza Tartufami Intense",
+    "nameSq": "Pica Tartufami",
+    "descriptionSq": "Salcë tartufi, mozzarella, peperoni, gorgonxola",
+    "descriptionEn": "Aromatic truffle cream, rich mozzarella, pepperoni slices, intense gorgonxola chunks",
+    "priceMedium": 800,
+    "priceFamily": 1550,
+    "category": "pizza",
+    "image": "https://imageproxy.wolt.com/assets/664c5e57d4f69826da86c738?w=600",
+    "tagsEn": [
+      "Explosive Luxury"
+    ],
+    "tagsSq": [
+      "Shije Absolute"
+    ]
+  },
+  {
+    "id": "sand-sallam",
+    "nameEn": "Salami Sandwich",
+    "nameSq": "Sandwich Sallam",
+    "descriptionSq": "majonezë, domate, ullinj, mozzarella, sallam",
+    "descriptionEn": "mayonnaise, fresh tomato slices, sliced olives, mozzarella, premium salami",
+    "priceSq": 150,
+    "category": "sandwiches",
+    "image": "https://imageproxy.wolt.com/assets/664c5e820378382c605b3a3c?w=600",
+    "tagsSq": [
+      "Klasik"
+    ],
+    "tagsEn": [
+      "Classic"
+    ]
+  },
+  {
+    "id": "sand-proshute",
+    "nameEn": "Ham Sandwich",
+    "nameSq": "Sandwich Proshutë",
+    "descriptionSq": "majonezë, domate, ullinj, mozzarella, proshutë",
+    "descriptionEn": "mayonnaise, sweet tomatoes, black olives, mozzarella cheese, classic cooked ham",
+    "priceSq": 200,
+    "category": "sandwiches",
+    "image": "https://imageproxy.wolt.com/assets/664c5e820378382c605b3a3c?w=600",
+    "tagsSq": [
+      "E Preferuar"
+    ],
+    "tagsEn": [
+      "Top Choice"
+    ],
+    "isPopular": true
+  },
+  {
+    "id": "sand-proshute-kerpudhe",
+    "nameEn": "Ham & Mushroom Sandwich",
+    "nameSq": "Sandwich Proshutë Kërpudhë",
+    "descriptionSq": "majonezë, mozzarella, proshutë, kërpudhë",
+    "descriptionEn": "creamy mayonnaise, soft mozzarella, savory cooked ham, sautéed mountain mushrooms",
+    "priceSq": 230,
+    "category": "sandwiches",
+    "image": "https://imageproxy.wolt.com/assets/664c5e820378382c605b3a3c?w=600"
+  },
+  {
+    "id": "sand-fshati",
+    "nameEn": "Country Style Sandwich (Fshati)",
+    "nameSq": "Sandwich Fshati",
+    "descriptionSq": "majonezë, domate, ullinj, djathë i bardhë, sallam",
+    "descriptionEn": "light mayo, rich tomatoes, local olives, organic soft white cheese, salami slices",
+    "priceSq": 170,
+    "category": "sandwiches",
+    "image": "https://imageproxy.wolt.com/assets/664c5e820378382c605b3a3c?w=600",
+    "tagsSq": [
+      "Fshati"
+    ],
+    "tagsEn": [
+      "Traditional"
+    ]
+  },
+  {
+    "id": "sand-rukola",
+    "nameEn": "Arugula & Mozzarella Sandwich",
+    "nameSq": "Sandwich Rukola",
+    "descriptionSq": "majonezë, domate, ullinj, mozzarella, djathë i bardhë, rukola",
+    "descriptionEn": "mayonnaise, tomatoes, sliced olives, fresh mozzarella, traditional salad cheese, wild baby arugula",
+    "priceSq": 250,
+    "category": "sandwiches",
+    "image": "https://imageproxy.wolt.com/assets/664c5e820378382c605b3a3c?w=600",
+    "tagsSq": [
+      "E Freskët"
+    ],
+    "tagsEn": [
+      "Freshly Tossed"
+    ]
+  },
+  {
+    "id": "sand-tonno",
+    "nameEn": "Classic Tuna Sandwich",
+    "nameSq": "Sandwich Tonno",
+    "descriptionSq": "majonezë, domate, ullinj, mozzarella, ton",
+    "descriptionEn": "house mayo, fresh sweet tomatoes, rich olives, mozzarella, bonito shredded tuna",
+    "priceSq": 200,
+    "category": "sandwiches",
+    "image": "https://imageproxy.wolt.com/assets/664c5e820378382c605b3a3c?w=600"
+  },
+  {
+    "id": "sand-pikant",
+    "nameEn": "Spicy Ventricina Sandwich",
+    "nameSq": "Sandwich Pikant",
+    "descriptionSq": "majonezë, domate, ullinj, mozzarella, sallam pikant",
+    "descriptionEn": "mayonnaise, tomato, black olives, mozzarella, hot Italian fiery ventricina salami",
+    "priceSq": 230,
+    "category": "sandwiches",
+    "image": "https://imageproxy.wolt.com/assets/664c5e820378382c605b3a3c?w=600",
+    "tagsSq": [
+      "Pikante"
+    ],
+    "tagsEn": [
+      "Spicy"
+    ]
+  },
+  {
+    "id": "sand-katër-djathrat",
+    "nameEn": "Four Cheese Feast Sandwich",
+    "nameSq": "Sandwich 4 Djathrat",
+    "descriptionSq": "majonezë, domate, ullinj, mozzarella, guda, gorgonxola, djathë i bardhë",
+    "descriptionEn": "mayo, tomato slices, olives, mozzarella, melting gouda, rich gorgonzola, soft white cheese",
+    "priceSq": 200,
+    "category": "sandwiches",
+    "image": "https://imageproxy.wolt.com/assets/664c5e820378382c605b3a3c?w=600",
+    "tagsSq": [
+      "4 Djathërat"
+    ],
+    "tagsEn": [
+      "4 Cheeses"
+    ]
+  },
+  {
+    "id": "sand-la-crema",
+    "nameEn": "La Crema Dream Sandwich",
+    "nameSq": "Sandwich La Crema",
+    "descriptionSq": "majonezë, domate, ullinj, mozzarella, sallam pikant, pana, kërpudhë",
+    "descriptionEn": "mayo, tomatoes, black olives, mozzarella, fiery ventricina salami, light cream coat, mushrooms",
+    "priceSq": 250,
+    "category": "sandwiches",
+    "image": "https://imageproxy.wolt.com/assets/664c5e820378382c605b3a3c?w=600",
+    "tagsSq": [
+      "Krem dhe Kërpurdhë"
+    ],
+    "tagsEn": [
+      "Super Creamy"
+    ]
+  },
+  {
+    "id": "sand-ton-kerpudhe",
+    "nameEn": "Tuna & Mushroom Sandwich",
+    "nameSq": "Sandwich Ton Kërpudhë",
+    "descriptionSq": "majonezë, mozzarella, ton, kërpudhë",
+    "descriptionEn": "gourmet mayonnaise, rich mozzarella, high-grade bonito tuna, sautéed mushroom slices",
+    "priceSq": 230,
+    "category": "sandwiches",
+    "image": "https://imageproxy.wolt.com/assets/664c5e820378382c605b3a3c?w=600"
+  },
+  {
+    "id": "sand-mix",
+    "nameEn": "Ultimate Mix Sandwich",
+    "nameSq": "Sandwich Mix",
+    "descriptionSq": "majonezë, domate, ullinj, mozzarella, ton, sallam pikant, kërpudhë",
+    "descriptionEn": "savory mayo, tomato, olives, mozzarella, bonito tuna chunks, spicy salami, grilled mushrooms",
+    "priceSq": 250,
+    "category": "sandwiches",
+    "image": "https://imageproxy.wolt.com/assets/664c5e820378382c605b3a3c?w=600",
+    "tagsSq": [
+      "Më i Ploti"
+    ],
+    "tagsEn": [
+      "Mega Mix"
+    ],
+    "isPopular": true
+  },
+  {
+    "id": "sand-vegjetarian",
+    "nameEn": "Vegetarian Delight Sandwich",
+    "nameSq": "Sandwich Vegjetarian",
+    "descriptionSq": "majonezë, mozzarella, domate, ullinj, kërpudhë",
+    "descriptionEn": "veggie mayo, cream mozzarella, freshly cut tomatoes, black olives, forest mushrooms",
+    "priceSq": 200,
+    "category": "sandwiches",
+    "image": "https://imageproxy.wolt.com/assets/664c5e820378382c605b3a3c?w=600",
+    "tagsSq": [
+      "Kopshti"
+    ],
+    "tagsEn": [
+      "Healthy Garden"
+    ]
+  },
+  {
+    "id": "sand-chicken",
+    "nameEn": "Crispy Chicken Fillet Sandwich",
+    "nameSq": "Sandwich Chicken",
+    "descriptionSq": "fileto pule, majonezë, mozzarella, domate, ullinj",
+    "descriptionEn": "freshly roasted chicken breast strips, mayonnaise, soft mozzarella, ripe tomatoes, olives",
+    "priceSq": 250,
+    "category": "sandwiches",
+    "image": "https://imageproxy.wolt.com/assets/664c5e820378382c605b3a3c?w=600",
+    "tagsSq": [
+      "Fileto Pule"
+    ],
+    "tagsEn": [
+      "High Protein"
+    ],
+    "isPopular": true
+  },
+  {
+    "id": "sand-proshute-krudo",
+    "nameEn": "True Prosciutto Crudo Sandwich",
+    "nameSq": "Sandwich Proshutë Krudo",
+    "descriptionSq": "majonezë, mozzarella, proshutë krudo, domate, ullinj",
+    "descriptionEn": "creamy mayonnaise, soft melting mozzarella, premium dry-cured prosciutto crudo, tomatoes, sliced olives",
+    "priceSq": 280,
+    "category": "sandwiches",
+    "image": "https://imageproxy.wolt.com/assets/664c5e820378382c605b3a3c?w=600",
+    "tagsSq": [
+      "Mbreti Krudo"
+    ],
+    "tagsEn": [
+      "Authentic Italian"
+    ]
+  },
+  {
+    "id": "sand-proshute-krudo-kerpudhe",
+    "nameEn": "Crudo Prosciutto & Mushroom Sandwich",
+    "nameSq": "Sandwich Proshutë Krudo & Kërpudhë",
+    "descriptionSq": "majonezë, mozzarella, proshutë krudo, kërpudhë",
+    "descriptionEn": "light mayonnaise, mozzarella, premium prosciutto crudo, tender white button mushrooms",
+    "priceSq": 300,
+    "category": "sandwiches",
+    "image": "https://imageproxy.wolt.com/assets/664c5e820378382c605b3a3c?w=600"
+  },
+  {
+    "id": "sand-tartufo",
+    "nameEn": "Elite Tartufo & Crudo Sandwich",
+    "nameSq": "Sandwich Tartufo",
+    "descriptionSq": "salcë tartufi, proshutë krudo, kërpudhë, mozzarella, majonezë",
+    "descriptionEn": "rich black truffle sauce base, prime prosciutto crudo, field mushrooms, mozzarella, mayonnaise",
+    "priceSq": 300,
+    "category": "sandwiches",
+    "image": "https://imageproxy.wolt.com/assets/664c5e820378382c605b3a3c?w=600",
+    "tagsSq": [
+      "Truf i Zi"
+    ],
+    "tagsEn": [
+      "Truffle Heaven"
+    ],
+    "isPopular": true
+  },
+  {
+    "id": "sand-tersina",
+    "nameEn": "Tersina Special Truffle Sandwich",
+    "nameSq": "Sandwich Tersina",
+    "descriptionSq": "salcë tartufi, peperoni, kërpudhë, mozzarella, majonezë",
+    "descriptionEn": "premium black truffle cream, hot pepperoni curls, grilled mushrooms, melted mozzarella, mayo",
+    "priceSq": 300,
+    "category": "sandwiches",
+    "image": "https://imageproxy.wolt.com/assets/664c5e820378382c605b3a3c?w=600"
+  },
+  {
+    "id": "sand-pro-special",
+    "nameEn": "PRO Sandwich Max",
+    "nameSq": "PRO Sandwich",
+    "descriptionSq": "majonezë, proshutë, mozzarella, djathë i bardhë, domate, pana",
+    "descriptionEn": "mayonnaise, cooked ham, melting mozzarella, traditional soft white cheese, tomatoes, rich heavy cream",
+    "priceSq": 250,
+    "category": "sandwiches",
+    "image": "https://imageproxy.wolt.com/assets/664c5e820378382c605b3a3c?w=600",
+    "tagsSq": [
+      "Më i Shijshmi"
+    ],
+    "tagsEn": [
+      "Supreme Choice"
+    ]
+  },
+  {
+    "id": "drink-water",
+    "nameEn": "Ujë (Spring Water)",
+    "nameSq": "Ujë",
+    "descriptionEn": "Pure and refreshing cold spring water.",
+    "descriptionSq": "Ujë i pastër burimi dhe i ftohtë freskues.",
+    "priceSq": 100,
+    "category": "drinks",
+    "image": "https://imageproxy.wolt.com/assets/664c5d33d4f69826da86c726?w=600"
+  },
+  {
+    "id": "drink-dhalle",
+    "nameEn": "Dhallë",
+    "nameSq": "Dhallë",
+    "descriptionEn": "Traditional cold savory yogurt drink, highly refreshing.",
+    "descriptionSq": "Dhallë tradicionale e ftohtë, e përgatitur me kos të freskët dhe kripë.",
+    "priceSq": 100,
+    "category": "drinks",
+    "image": "https://imageproxy.wolt.com/assets/69a6bed27d25f60394a0de33?w=600"
+  },
+  {
+    "id": "drink-cola",
+    "nameEn": "Coca-Cola",
+    "nameSq": "Coca Cola",
+    "descriptionEn": "Original taste, icy cold sparkling soda.",
+    "descriptionSq": "Shije origjinale, pije gazuar e ftohtë akull.",
+    "priceSq": 150,
+    "category": "drinks",
+    "image": "https://imageproxy.wolt.com/assets/664c5d38d4f69826da86c728?w=600"
+  },
+  {
+    "id": "drink-fanta-orange",
+    "nameEn": "Fanta Orange",
+    "nameSq": "Fanta Orange",
+    "descriptionEn": "Bright and sparkling orange soda.",
+    "descriptionSq": "Pije e gazuar me shije fantastike portokalli.",
+    "priceSq": 150,
+    "category": "drinks",
+    "image": "https://imageproxy.wolt.com/assets/69a6bec91950601875b8939f?w=600"
+  },
+  {
+    "id": "drink-fanta-exotic",
+    "nameEn": "Fanta Exotic",
+    "nameSq": "Fanta Exotic",
+    "descriptionEn": "Tropical exotic fruit sparkling soda.",
+    "descriptionSq": "Pije e gazuar me shije fantastike frutash ekzotike tropikale.",
+    "priceSq": 150,
+    "category": "drinks",
+    "image": "https://imageproxy.wolt.com/assets/69a4b7aa7d25f60394a057bd?w=600"
+  }
+];
+
+export const REVIEWS: Review[] = [
+  {
+    "id": "rev-1",
+    "author": "Albix 90",
+    "type": "Local Guide",
+    "count": "136 vlerësime • 164 foto",
+    "rating": 5,
+    "dateEn": "8 months ago",
+    "dateSq": "Para 8 muajsh",
+    "commentEn": "It doesn’t only look good, its tasty and it has a perfect perfect golden crisp to it. Simply delicious.",
+    "commentSq": "Nuk duket vetëm mirë, është jashtëzakonisht e shijshme dhe pjekja fantastike bën diferencën sa i takon krustës!"
+  },
+  {
+    "id": "rev-2",
+    "author": "Gledis Basha",
+    "type": "Verified Local",
+    "count": "4 vlerësime",
+    "rating": 5,
+    "dateEn": "2 years ago",
+    "dateSq": "Para 2 vitesh",
+    "commentEn": "The food is super delicious, fresh and has very good premium ingredients. Fast delivery in Yzberisht!",
+    "commentSq": "Ushqimi është mjaft i shijshëm, i freskët dhe me përbërës mjaft cilësorë. Transport i shpejtë (20-25min)."
+  },
+  {
+    "id": "rev-3",
+    "author": "Fiona Hoxha",
+    "type": "Local Guide",
+    "count": "42 vlerësime • 10 foto",
+    "rating": 5,
+    "dateEn": "3 months ago",
+    "dateSq": "Para 3 muajsh",
+    "commentEn": "Hands down the best crust and ingredients in the area. Try Pizza Primavera and the Tartufo sandwich, absolutely perfect.",
+    "commentSq": "Pa diskutim picat më fantastike në këtë zonë. Këshilloj Pica Primavera dhe sandwich me Tartufo, janë perfektë."
+  }
+];
