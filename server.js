@@ -1,6 +1,8 @@
 import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
+import compression from "compression";
+import helmet from "helmet";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -9,9 +11,9 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 // Enable gzip/deflate compression for optimal performance
-import compression from "compression";
+app.use(compression());
+
 // Let's protect headers using simplified helmet-like configurations
-import helmet from "helmet";
 
 // Fallback safety to run without optional imports if needed, 
 // but since this is our Docker environment, we will install them or write vanilla Node if we want to be safe.
