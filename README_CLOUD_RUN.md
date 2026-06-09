@@ -72,6 +72,22 @@ This method builds the container securely in the cloud utilizing Google's secure
 * *Note: When prompted, select **`y`** to allow build configurations and allow public unauthenticated traffic.*
 * Once completed, Google Cloud will output a public **`https://...`** URL pointing directly to your live, production-scale, automatic-SSL secured pizza platform in the cloud!
 
+### Option B: Automatic Continuous Deployment (CD) via GitHub
+If you have already created a Cloud Run service and want updates to deploy automatically whenever you push code (`git push`) to GitHub, configure Google's built-in CD trigger:
+
+1. Go to the **[Google Cloud Console](https://console.cloud.google.com/)** and navigate to **Cloud Run**.
+2. Click on your **existing service** (e.g., `pro-pizza-website`).
+3. Inside the service dashboard, click **Set Up Continuous Deployment** (or **Edit & Deploy New Revision** -> Check *Set up continuous deployment* if building a new setup).
+4. Select **GitHub** as your continuous deployment repository provider. (Authenticate with GitHub if prompted).
+5. Choose your repository and branch (e.g., `main`).
+6. In the build configuration:
+   - Select **Dockerfile** as your deployment build method.
+   - Enter standard `Dockerfile` in the source path box.
+7. Click **Save**.
+
+Google Cloud Build will automatically provision an asynchronous webhook. Whenever you push to your selected branch, Google Cloud will build your multi-stage Dockerfile and gracefully roll out a secure, zero-downtime revision update to your live website!
+
+---
 ---
 
 ## ⚡ What Makes This Setup Perfect for Google Cloud?
