@@ -902,7 +902,7 @@ export const PRODUCTS: MenuItem[] = [
     "nameSq": "Ujë",
     "descriptionEn": "Pure and refreshing cold spring water.",
     "descriptionSq": "Ujë i pastër burimi dhe i ftohtë freskues.",
-    "priceSq": 100,
+    "priceSq": 60,
     "category": "drinks",
     "image": "https://imageproxy.wolt.com/assets/664c5d33d4f69826da86c726?w=600"
   },
@@ -912,7 +912,7 @@ export const PRODUCTS: MenuItem[] = [
     "nameSq": "Dhallë",
     "descriptionEn": "Traditional cold savory yogurt drink, highly refreshing.",
     "descriptionSq": "Dhallë tradicionale e ftohtë, e përgatitur me kos të freskët dhe kripë.",
-    "priceSq": 100,
+    "priceSq": 70,
     "category": "drinks",
     "image": "https://imageproxy.wolt.com/assets/69a6bed27d25f60394a0de33?w=600"
   },
