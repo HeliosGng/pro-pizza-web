@@ -110,7 +110,7 @@ export function Header({
               {lang === "en" ? "Location & Hours" : "Adresa & Orari"}
             </button>
             <a
-              href="https://wolt.com"
+              href="https://wolt.com/en/alb/tirana/restaurant/pro-pizza?srsltid=AfmBOopri2ENWgvxB5oQxa9spA8DbWVG9rpz6E778rGMSTJx5lDkBvsY"
               target="_blank"
               rel="noreferrer"
               className="hover:text-red-500 transition-colors text-red-500 font-extrabold"
