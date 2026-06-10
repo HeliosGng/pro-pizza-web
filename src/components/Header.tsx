@@ -20,6 +20,28 @@ export function Header({
   onCartClick,
   heroImg,
 }: HeaderProps) {
+  const [isOpen, setIsOpen] = React.useState(true);
+
+  React.useEffect(() => {
+    const checkStatus = () => {
+      try {
+        const options = { timeZone: "Europe/Tirane", hour: "numeric", hour12: false } as const;
+        const formatter = new Intl.DateTimeFormat("en-US", options);
+        const hr = parseInt(formatter.format(new Date()), 10);
+        // Open daily from 10:00 to 24:00 (which is hour 10 through 23 inclusive)
+        setIsOpen(hr >= 10 && hr < 24);
+      } catch (e) {
+        const hr = new Date().getHours();
+        setIsOpen(hr >= 10 && hr < 24);
+      }
+    };
+
+    checkStatus();
+    // Update every 15 seconds to ensure accuracy
+    const interval = setInterval(checkStatus, 15000);
+    return () => clearInterval(interval);
+  }, []);
+
   const scrollToMenu = () => {
     const el = document.getElementById("menu-section");
     if (el) el.scrollIntoView({ behavior: "smooth" });
@@ -37,9 +59,12 @@ export function Header({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row gap-3 sm:gap-0 justify-between items-center">
           <div className="flex flex-wrap items-center gap-3">
             <span className="flex items-center gap-1.5 bg-red-950/40 px-2.5 py-0.5 rounded border border-red-900/30">
-              <span className="w-1.5 h-1.5 rounded-full bg-red-600 animate-pulse"></span>
-              <span className="text-[10px] text-red-400 font-bold tracking-wider uppercase">
-                {lang === "en" ? "Closed • Opens 10:00 AM" : "Mbyllur • Hapet në 10:00"}
+              <span className={`w-1.5 h-1.5 rounded-full ${isOpen ? "bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.8)]" : "bg-red-600 animate-pulse"}`}></span>
+              <span className={`text-[10px] ${isOpen ? "text-green-400" : "text-red-400"} font-bold tracking-wider uppercase`}>
+                {isOpen 
+                  ? (lang === "en" ? "Open • Order Delivery & Takeout" : "Hapur • Transport & Merre Vetë")
+                  : (lang === "en" ? "Closed • Opens at 10:00 AM" : "Mbyllur • Hapet në 10:00")
+                }
               </span>
             </span>
             <span className="hidden sm:inline text-white/10">|</span>
@@ -134,10 +159,17 @@ export function Header({
             {/* Live Indicator inside navbar */}
             <div className="hidden sm:flex items-center gap-3 pr-2">
               <div className="flex flex-col items-end">
-                <span className="text-[9px] uppercase tracking-tighter text-red-500 font-black">Live Status</span>
-                <span className="text-xs font-bold text-white/80">Open until 11:00 PM</span>
+                <span className={`text-[9px] uppercase tracking-tighter ${isOpen ? "text-green-500 font-extrabold" : "text-red-500 font-black"}`}>
+                  {lang === "en" ? "Live Status" : "Statusi Live"}
+                </span>
+                <span className="text-xs font-bold text-white/80">
+                  {isOpen 
+                    ? (lang === "en" ? "Open • Under 12:00 AM" : "Hapur • Deri në 24:00")
+                    : (lang === "en" ? "Closed • opens 10 AM" : "Mbyllur • Hapet në 10:00")
+                  }
+                </span>
               </div>
-              <div className="w-2.5 h-2.5 bg-green-500 rounded-full shadow-[0_0_10px_rgba(34,197,94,0.8)]"></div>
+              <div className={`w-2.5 h-2.5 rounded-full ${isOpen ? "bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.8)]" : "bg-red-600 animate-pulse"}`}></div>
             </div>
 
             {/* Shopping Cart button: Immersive UI variant */}
